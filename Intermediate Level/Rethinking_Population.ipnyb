@@ -1,0 +1,39 @@
+# Rethinking the population pyramid
+
+This notebook provides the methodology and code used in the blog post, [Rethinking the population pyramid](http://www.randalolson.com/2015/07/14/rethinking-the-population-pyramid/).
+
+### Notebook by [Randal S. Olson](http://www.randalolson.com/)
+
+Please see the [repository README file](https://github.com/rhiever/Data-Analysis-and-Machine-Learning-Projects#license) for the licenses and usage terms for the instructional material and code in this notebook. In general, I have licensed this material so that it is widely useable and shareable as possible.
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+# This is a custom matplotlib style that I use for most of my charts
+plt.style.use('https://gist.githubusercontent.com/rhiever/d0a7332fe0beebfdc3d5/raw/205e477cf231330fe2f265070f7c37982fd3130c/tableau10.mplstyle')
+
+age_gender_data = pd.read_csv('http://www.randalolson.com/wp-content/uploads/us-age-gender-breakdown.csv')
+age_gender_data.head()
+
+fig = plt.figure(figsize=(15, 7))
+ax1 = fig.add_subplot(111)
+
+for (i, row) in age_gender_data.iterrows():
+    plt.bar([i, i], [row['Females_2010'], -row['Males_2010']],
+            color=['#CC6699', '#008AB8'], width=0.8, align='center', edgecolor='none')
+    
+plt.xlim(-0.6, 20.6)
+plt.ylim(-12.1e6, 12.1e6)
+#plt.grid(False, axis='x')
+plt.xticks(np.arange(0, 21), age_gender_data['Age_Range'], fontsize=11)
+plt.yticks(np.arange(-12e6, 13e6, 2e6),
+           ['{}m'.format(int(abs(x) / 1e6)) if x != 0 else 0 for x in np.arange(-12e6, 13e6, 2e6)])
+plt.xlabel('Age group')
+plt.ylabel('Number of people (millions)')
+
+plt.savefig('pop_pyramid_rotated.pdf');
+
+
+
