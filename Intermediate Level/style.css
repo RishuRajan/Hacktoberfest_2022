@@ -1,0 +1,44 @@
+html, body, #container {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: black;
+}
+
+body, #container, #canvas {
+	overscroll-behavior: contain;
+}
+
+#pause-button {
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	padding: 5px;
+	color: white;
+	background: none;
+	border: none;
+	outline: none;
+}
+
+#score-label {
+	position: fixed;
+	top: 15px;
+	left: 15px;
+	padding: 5px;
+	color: white;
+	border: none;
+	background: none;
+	font-family: Helvetica;
+}
+
+#container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#canvas {
+	border: 1px solid white;
+	box-sizing: border-box;
+}
