@@ -1,5 +1,6 @@
     # -*- coding: utf-8 -*-
 
+	#libraries required to import
 import shutil
 import os
 import glob
@@ -98,7 +99,7 @@ def run_UI():
     window.geometry("600x400+400+200")
     
     window.config(background = "purple")
-    photo=PhotoImage(file="lazylogo.gif")
+    photo=PhotoImage(file="./lazylogo.gif")
     Label(window,bg='purple').pack(pady=5)
 
     Label(window,image=photo,bg='purple').pack(pady=5)
@@ -138,5 +139,3 @@ if __name__ == "__main__":
     p=run_UI()
     end=time()
     print("App closed in ",round(end-st,3)," seconds")
-    
-
